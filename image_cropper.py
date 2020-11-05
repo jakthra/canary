@@ -33,6 +33,10 @@ def run(args):
   for file in multiple_file_types(os.path.join(folder_selected,'*.jpg'), os.path.join(folder_selected,'*.jpeg')):
     # Get image name
     image_name = os.path.basename(file)
+    image_name_end = image_name.split('.')
+    image_name_final = image_name_end[0] + "_" + str(args.output_resolution[0]) + "x" + str(args.output_resolution[1]) + "." + image_name_end[1]
+
+    print(image_name_final)
 
     # load image from input folder
     im = Image.open(file)

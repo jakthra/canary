@@ -10,6 +10,7 @@ pip install -r requirements.txt
 
 ## Use
 
+Put images you want cropped into raw_images/ 
 
 ```
 python image_cropper.py

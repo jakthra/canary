@@ -36,14 +36,15 @@ def run(args):
     image_name_end = image_name.split('.')
     image_name_final = image_name_end[0] + "_" + str(args.output_resolution[0]) + "x" + str(args.output_resolution[1]) + "." + image_name_end[1]
 
-    print(image_name_final)
+    
 
     # load image from input folder
     im = Image.open(file)
     im = crop_and_resize(args, im, image_name)
 
     # Save image
-    image_path = os.path.join(args.output_folder, image_name)
+    image_path = os.path.join(args.output_folder, image_name_final)
+    print(image_path)
     im.save(image_path, dpi=(args.output_dpi,args.output_dpi))
 
     # Optimize file size

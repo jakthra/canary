@@ -7,7 +7,11 @@ import os
 import glob
 from tkinter import filedialog
 from tkinter import Tk
+import itertools as it
 
+
+def multiple_file_types(*patterns):
+    return it.chain.from_iterable(glob.iglob(pattern) for pattern in patterns)
 
 def run(args):
   args = DotMap(args)
@@ -26,7 +30,7 @@ def run(args):
     os.mkdir(args.output_folder)
 
   print(f'Processing images from: {folder_selected} to: {args.output_folder}')
-  for file in glob.glob(os.path.join(folder_selected,'*.jpeg')):
+  for file in multiple_file_types(os.path.join(folder_selected,'*.jpg'), os.path.join(folder_selected,'*.jpeg')):
     # Get image name
     image_name = os.path.basename(file)
 
